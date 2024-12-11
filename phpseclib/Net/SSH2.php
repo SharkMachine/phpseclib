@@ -1705,6 +1705,7 @@ class SSH2
             if ($this->session_id === false) {
                 // [kex-strict-s-v00@openssh.com is] only valid in the initial SSH2_MSG_KEXINIT and MUST be ignored
                 // if [it is] present in subsequent SSH2_MSG_KEXINIT packets
+                /** @phpstan-suppress InvalidPropertyAssignmentValue */
                 $this->strict_kex_flag = true;
                 if (count($this->kex_buffer)) {
                     throw new \UnexpectedValueException('Possible Terrapin Attack detected');
@@ -3539,6 +3540,7 @@ class SSH2
 
     /**
      * @return int[] second and microsecond stream timeout options based on user-requested timeout and keep-alive, or the default socket timeout by default, which mirrors PHP socket streams.
+     * @phpstan-suppress InvalidReturnType
      */
     private function get_stream_timeout()
     {
@@ -3556,6 +3558,7 @@ class SSH2
                 $usec = (int) (1000000 * ($timeout - $sec));
             }
         }
+        /** @phpstan-suppress InvalidReturnStatement */
         return [$sec, $usec];
     }
 

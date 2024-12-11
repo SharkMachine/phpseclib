@@ -1350,6 +1350,7 @@ abstract class PHP extends Engine
     public function getLength()
     {
         $max = count($this->value) - 1;
+        /** @psalm-suppress UndefinedConstant UndefinedMethod */
         return $max != -1 ?
             $max * static::BASE + intval(ceil(log($this->value[$max] + 1, 2))) :
             0;

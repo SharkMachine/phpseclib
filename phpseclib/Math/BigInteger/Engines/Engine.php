@@ -1024,6 +1024,7 @@ abstract class Engine implements \JsonSerializable
         if ($this->compare(static::$one[static::class]) < 0) {
             return clone static::$zero[static::class];
         } // we want positive numbers
+        /** @psalm-suppress UndefinedMethod */
         if ($this->compare(static::$two[static::class]) < 0) {
             return clone static::$one[static::class];
         } // n-th root of 1 or 2 is 1
@@ -1191,6 +1192,7 @@ abstract class Engine implements \JsonSerializable
         $d = clone $one;
 
         while (!$v->equals($zero)) {
+            /** @psalm-suppress UndefinedMethod */
             list($q) = $u->divide($v);
 
             $temp = $u;

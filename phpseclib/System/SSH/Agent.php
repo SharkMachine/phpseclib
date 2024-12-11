@@ -211,6 +211,7 @@ class Agent
     public function findIdentityByPublicKey(PublicKey $key)
     {
         $identities = $this->requestIdentities();
+        /** @phpstan-suppress InvalidCast */
         $key = (string) $key;
         foreach ($identities as $identity) {
             if (((string) $identity->getPublicKey()) == $key) {
